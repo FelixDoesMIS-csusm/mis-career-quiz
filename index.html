@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MIS Career Fit Quiz</title>
+  <meta name="description" content="A career exploration quiz that matches business and MIS students with 12 Information Systems career families, with 2025-35 outlook and AI notes.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="vendor/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container d-flex align-items-center justify-content-between py-3">
+      <span class="brand"><span class="brand-mark" aria-hidden="true">IS</span> MIS Career Fit</span>
+      <span class="header-note d-none d-sm-inline">For business &amp; MIS students</span>
+    </div>
+  </header>
+
+  <main class="container py-4 py-md-5">
+
+    <!-- ================= START ================= -->
+    <section id="view-start" class="view" aria-labelledby="start-title">
+      <div class="row justify-content-center">
+        <div class="col-lg-9 col-xl-8">
+          <div class="card hero-card">
+            <div class="card-body p-4 p-md-5">
+              <p class="eyebrow">Career Fit Quiz</p>
+              <h1 id="start-title" class="display-title">Where do you fit in Information Systems?</h1>
+              <p class="lead-text">
+                MIS leads to a lot of different careers. This quiz asks how you feel about real tasks, builds your
+                <strong>work profile</strong>, and matches it with <strong>12 career families</strong>, including each one's job outlook and how AI is changing it.
+              </p>
+
+              <div id="last-result" class="alert alert-info last-result" hidden></div>
+
+              <ol class="parts-list">
+                <li><span><strong>Part A:</strong> rate 20 tasks</span> <span class="part-time">about 3 min</span></li>
+                <li><span><strong>Part B:</strong> 6 workplace scenarios</span> <span class="part-time">about 3 min</span></li>
+                <li><span><strong>Part C:</strong> 5 work-style questions</span> <span class="part-time">1 min</span></li>
+                <li><span><strong>Part D:</strong> what you've tried so far</span> <span class="part-time">optional</span></li>
+              </ol>
+
+              <div class="d-flex flex-wrap align-items-center gap-3 mt-4">
+                <button id="btn-start" class="btn btn-primary btn-lg px-4" type="button">Start the quiz &rarr;</button>
+                <span class="text-muted small">No sign-up. Your answers never leave your browser.</span>
+              </div>
+
+              <h2 class="paths-heading">Career families you could match</h2>
+              <div id="family-chips" class="path-chips"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= QUIZ ================= -->
+    <section id="view-quiz" class="view" hidden aria-label="Quiz">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 col-xl-7">
+          <div class="d-flex justify-content-between small fw-semibold mb-2">
+            <span id="part-label"></span>
+            <span id="progress-pct" class="text-muted"></span>
+          </div>
+          <div class="progress quiz-progress" role="progressbar" aria-label="Quiz progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+            <div id="progress-bar" class="progress-bar" style="width: 0%"></div>
+          </div>
+
+          <div class="card question-card mt-4">
+            <div class="card-body p-4 p-md-5">
+              <p id="step-kicker" class="step-kicker"></p>
+              <h2 id="step-title" class="question-text" tabindex="-1"></h2>
+              <p id="step-sub" class="step-sub"></p>
+              <div id="step-body"></div>
+
+              <div class="d-flex justify-content-between align-items-center mt-4 gap-2">
+                <button id="btn-back" class="btn btn-outline-primary" type="button">&larr; Back</button>
+                <div class="d-flex gap-2">
+                  <button id="btn-skip" class="btn btn-link" type="button" hidden>Skip</button>
+                  <button id="btn-next" class="btn btn-primary px-4" type="button" disabled>Next &rarr;</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p id="key-tip" class="text-center text-muted small mt-3 d-none d-md-block"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= RESULTS ================= -->
+    <section id="view-results" class="view" hidden aria-labelledby="results-title">
+      <div class="row justify-content-center">
+        <div class="col-lg-10 col-xl-9">
+          <p class="eyebrow text-center">Your results</p>
+          <h1 id="results-title" class="results-title text-center">Your strongest career matches</h1>
+          <p class="text-center text-muted mb-4">Based on what you enjoy, not on ability. Use it to decide what to explore next.</p>
+
+          <div id="confidence-note" class="alert alert-warning" hidden></div>
+          <div id="tie-note" class="alert alert-primary" hidden></div>
+
+          <div id="cards"></div>
+
+          <div class="row g-4 mt-1">
+            <div class="col-lg-6">
+              <div class="card h-100">
+                <div class="card-body p-4">
+                  <h2 class="section-title">Your work profile</h2>
+                  <p class="small text-muted">How much each kind of work appealed to you, strongest first.</p>
+                  <div id="profile"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="card h-100">
+                <div class="card-body p-4">
+                  <h2 class="section-title">All 12 families</h2>
+                  <div id="all-families"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <details class="method card mt-4">
+            <summary class="p-4">How this quiz works</summary>
+            <div class="px-4 pb-4" id="method-text"></div>
+          </details>
+
+          <div class="d-flex flex-wrap justify-content-center gap-3 mt-4">
+            <button id="btn-copy" class="btn btn-primary" type="button">Copy my results</button>
+            <button id="btn-retake" class="btn btn-outline-primary" type="button">Retake the quiz</button>
+          </div>
+          <p id="copy-status" class="text-center small mt-2" aria-live="polite"></p>
+          <textarea id="copy-fallback" class="form-control mt-2" rows="10" hidden aria-label="Your results as text"></textarea>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container py-4 small text-center">
+      MIS Career Fit Quiz v<span id="version"></span> &middot; Built by Felix Gross &middot; Outlook and certification facts checked <span id="checked"></span><br>
+      Job outlook from the U.S. Bureau of Labor Statistics, 2025&ndash;35 projections. An exploration aid, not a test of ability.
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/scoring.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
