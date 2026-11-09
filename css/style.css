@@ -275,3 +275,7 @@ details.family-card[open] .family-head::after { content: "\2212"; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+@media print {
+  .site-header, .site-footer, button, .btn { display: none !important; }
+}

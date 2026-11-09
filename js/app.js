@@ -382,6 +382,13 @@
     }
   }
 
+  function printResults() {
+    document.querySelectorAll("#cards details.family-card").forEach((card) => {
+      card.open = true;
+    });
+    window.print();
+  }
+
   // ---------- Events ----------
   $("btn-start").addEventListener("click", startQuiz);
   $("btn-retake").addEventListener("click", () => { renderStart(); startQuiz(); });
@@ -389,6 +396,7 @@
   $("btn-back").addEventListener("click", goBack);
   $("btn-skip").addEventListener("click", () => { answers.experience = {}; showResults(); });
   $("btn-copy").addEventListener("click", copySummary);
+  $("btn-print").addEventListener("click", printResults);
 
   $("step-body").addEventListener("change", (e) => {
     const t = e.target;
