@@ -2,7 +2,7 @@
 
 A career exploration quiz for business and MIS students. It asks how you feel about real work tasks, builds a 10-part **work profile**, and matches it with **12 Information Systems career families**. Each match shows its 2025–35 job outlook and how AI is changing the work.
 
-**Live app:** _add your GitHub Pages link here_
+**Live app:** https://felixdoesmis-csusm.github.io/mis-career-quiz/
 
 Built by Felix Gross. A version of this quiz is planned for the MIS 410 final project (MIS Society website redesign).
 
