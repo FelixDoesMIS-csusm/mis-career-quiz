@@ -243,6 +243,11 @@
       ? `<div class="heads-up"><strong>Heads up:</strong><ul>${list(card.notes)}</ul></div>`
       : "";
     const skills = card.skills.map((s) => `<li>${esc(s.name)}${s.tried ? ' <span class="tried">✓ you\'ve tried this</span>' : ""}</li>`).join("");
+    const aiExposure = f.outlook.aiExposure
+      ? `<p class="small mb-1">AI exposure (BLS): ${esc(f.outlook.aiExposure)}</p>
+          <a class="small d-block" href="https://www.bls.gov/emp/publications/ai-exposure-categories.htm" target="_blank" rel="noopener">BLS AI exposure categories</a>
+          <p class="small text-muted mb-0">Relative to other jobs. Not a forecast of job loss.</p>`
+      : "";
 
     const inner = `
       <p class="family-tagline">${esc(f.tagline)}</p>
@@ -263,6 +268,7 @@
           <p class="fact-big">${esc(f.outlook.growth)}</p>
           <p class="small mb-1">${esc(f.outlook.occupation)} · median pay ${esc(f.outlook.pay)} (2025)</p>
           <a class="small" href="${f.outlook.url}" target="_blank" rel="noopener">BLS Occupational Outlook Handbook</a>
+          ${aiExposure}
         </div>
         <div class="fact">
           <h4 class="detail-heading">How AI is changing it</h4>
