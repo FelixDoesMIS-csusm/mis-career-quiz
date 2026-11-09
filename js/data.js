@@ -384,7 +384,7 @@ const FAMILIES = [
       { name: "Security fundamentals", key: "securitylab" },
     ],
     certs: {
-      now: ["CompTIA Security+", "IAPP AIGP, Artificial Intelligence Governance Professional (check current requirements at iapp.org)"],
+      now: ["CompTIA Security+", "IAPP AIGP, Artificial Intelligence Governance Professional (no prerequisites)"],
       later: ["ISACA CISA", "ISACA AAIA (AI audit; requires CISA or a similar audit credential)"],
     },
     outlook: { occupation: "Information security analysts (closest BLS match)", growth: "+21%", pay: "$129,180", url: BLS + "computer-and-information-technology/information-security-analysts.htm" },
